@@ -1,0 +1,26 @@
+
+.instructions_wraper{
+    position: absolute;
+    width: 90%;
+    bottom: 80px;
+    z-index: 2;
+}
+
+.instructions_container{
+    position: relative;
+    background-color: #ededed;
+    color: rgb(22, 22, 122);
+    border-radius: 20px;
+    opacity: 1;
+    transition: opacity 1.5s;
+}
+
+.instructions_fake_btn{
+    position: absolute;
+    bottom: -21px;;
+    background-color: rgb(22, 22, 122);
+    color: #ededed;
+    border-radius: 10px;
+    width: 50%;
+}
+

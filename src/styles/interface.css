@@ -1,0 +1,21 @@
+
+.customization_interface{
+    max-width: 600px;
+    position: absolute;
+    top: 32%;
+    height: 30vh;
+    pointer-events: none;
+}
+
+.interface_btn{
+    pointer-events: all;
+    background-color: #e3e3e3;
+    border: none;
+    color: rgb(22, 22, 122)
+}
+
+@media screen and (max-width: 768px){
+    .customization_interface{
+        top: 15%;
+    }
+}
