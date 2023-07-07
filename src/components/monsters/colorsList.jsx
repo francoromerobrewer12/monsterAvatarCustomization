@@ -6,11 +6,11 @@ const colorsList = [
     },
     {
         'id': 1,
-        'color': '#7b1616'
+        'color': '#57386b'
     },
     {
         'id': 2,
-        'color': '#57386b'
+        'color': '#7b1616'
     },
     {
         'id': 3,

@@ -7,9 +7,16 @@
     pointer-events: none;
 }
 
+.rotation_btn{
+    position: absolute;
+    bottom: -40%;
+    width: 58px !important;
+    height: 56px !important;
+}
+
 .interface_btn{
     pointer-events: all;
-    background-color: #e3e3e3;
+    background-color: #fff;
     border: none;
     color: rgb(22, 22, 122)
 }

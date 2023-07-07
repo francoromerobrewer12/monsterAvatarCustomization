@@ -1,6 +1,7 @@
 import './App.css'
 import { useState } from 'react'
 import { Suspense, useEffect } from 'react'
+import { Environment } from '@react-three/drei'
 import Experience from './components/Experience'
 import { Canvas, useThree } from '@react-three/fiber'
 import LoadingScreen from './components/LoadingScreen'
@@ -46,6 +47,7 @@ function App() {
   const [avatarSelectedIndex, setAvatarSelectedIndex]  = useState(0)
   const [skinColorIndex, setSkinColorIndex]  = useState(0)
   const [headDetailColorIndex, setHeadDetailColorIndex]  = useState(0)
+  const [rotationSelected, setRotationSelected]  = useState(true)
 
   // Selected data
   let selectedSkinColor = null
@@ -107,9 +109,12 @@ function App() {
         {
           startedExperience && <Experience
               modelPosition={modelPosition}
-              selectedMonster={selectedMonster} />
+              selectedMonster={selectedMonster}
+              rotationSelected={rotationSelected}
+          />
         }
         </Suspense>
+        <Environment preset="city" />
       </Canvas>
       <LoadingScreen startedExperience={startedExperience} setStartedExperience={() => setStartedExperience(true)}/>
       <CustomizationInterface
@@ -119,8 +124,11 @@ function App() {
         setSkinColorIndex={setSkinColorIndex}
         headDetailColorIndex={headDetailColorIndex}
         setHeadDetailColorIndex={setHeadDetailColorIndex}
+        rotationSelected={rotationSelected}
+        setRotationSelected={setRotationSelected}
       />
       <CustomizationInstructions startedExperience={startedExperience}/>
+
     </div>
   )
 }

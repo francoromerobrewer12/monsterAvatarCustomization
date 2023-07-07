@@ -1,11 +1,11 @@
 import { useRef } from 'react';
 import '../styles/interface.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
 
 import colorsList from './monsters/colorsList';
 import monstersList from './monsters/monstersList';
-import buttonClickSound from '../../public/sounds/click_sound.wav'
+import buttonClickSound from '../sounds/click_sound.wav'
 
 const CustomizationInterface = ({
     avatarSelectedIndex,
@@ -13,7 +13,9 @@ const CustomizationInterface = ({
     skinColorIndex,
     setSkinColorIndex,
     headDetailColorIndex,
-    setHeadDetailColorIndex
+    setHeadDetailColorIndex,
+    rotationSelected,
+    setRotationSelected
 }) => {
     const clickSound = useRef()
     const monsterListLength = monstersList.length
@@ -75,19 +77,29 @@ const CustomizationInterface = ({
         setHeadDetailColorIndex(prevColor => prevColor + 1);
     };
 
+    const handleRotationAvatar = () => {
+        clickSound.current.play();
+
+        setRotationSelected(!rotationSelected)
+    };
+
     return (
     <div className="customization_interface w-100 d-flex flex-column justify-content-around px-4">
+        <div className="d-flex w-100 align-items-center justify-content-center">
+            <button className="rotation_btn interface_btn rounded-circle mb-3" onClick={handleRotationAvatar}><FontAwesomeIcon icon={faArrowsRotate} /></button>
+        </div>
+
         <div className="d-flex w-100 justify-content-between">
-            <button className="interface_btn py-3 px-4 rounded-circle" onClick={handlePrevAvatar}><FontAwesomeIcon icon={faChevronLeft} /></button>
-            <button className="interface_btn py-3 px-4 rounded-circle" onClick={handleNextAvatar}><FontAwesomeIcon icon={faChevronRight} /></button>
+            <button className="interface_btn py-3 px-4 rounded-circle mb-2" onClick={handlePrevAvatar}><FontAwesomeIcon icon={faChevronLeft} /></button>
+            <button className="interface_btn py-3 px-4 rounded-circle mb-2" onClick={handleNextAvatar}><FontAwesomeIcon icon={faChevronRight} /></button>
         </div>
         <div className="d-flex w-100 justify-content-between">
-            <button className="interface_btn py-3 px-4 rounded-circle" onClick={handlePrevSkinColor}><FontAwesomeIcon icon={faChevronLeft} /></button>
-            <button className="interface_btn py-3 px-4 rounded-circle" onClick={handleNextSkinColor}><FontAwesomeIcon icon={faChevronRight} /></button>
+            <button className="interface_btn py-3 px-4 rounded-circle mb-2" onClick={handlePrevSkinColor}><FontAwesomeIcon icon={faChevronLeft} /></button>
+            <button className="interface_btn py-3 px-4 rounded-circle mb-2" onClick={handleNextSkinColor}><FontAwesomeIcon icon={faChevronRight} /></button>
         </div>
         <div className="d-flex w-100 justify-content-between">
-            <button className="interface_btn py-3 px-4 rounded-circle" onClick={handlePrevHeadDetailColor}><FontAwesomeIcon icon={faChevronLeft} /></button>
-            <button className="interface_btn py-3 px-4 rounded-circle" onClick={handleNextHeadDetailColor}><FontAwesomeIcon icon={faChevronRight} /></button>
+            <button className="interface_btn py-3 px-4 rounded-circle mb-2" onClick={handlePrevHeadDetailColor}><FontAwesomeIcon icon={faChevronLeft} /></button>
+            <button className="interface_btn py-3 px-4 rounded-circle mb-2" onClick={handleNextHeadDetailColor}><FontAwesomeIcon icon={faChevronRight} /></button>
         </div>
         <audio ref={clickSound} src={buttonClickSound} />
     </div>
